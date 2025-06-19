@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-// MessageInput component: input for sending a new chat message
-function MessageInput({ onSendMessage }) {
+//  input for sending a new chat message
+function MessageInput({ onSendMessage, wsConnected }) {
   const [input, setInput] = useState('');
 
   // Handle form submission
@@ -19,11 +19,27 @@ function MessageInput({ onSendMessage }) {
         type="text"
         value={input}
         onChange={e => setInput(e.target.value)}
-        placeholder="Type a message..."
-        style={{ flex: 1 }}
+        placeholder={wsConnected ? "Type a message..." : "Connecting..."}
+        style={{ flex: 1, padding: '8px 12px', borderRadius: 16, border: '1px solid #ccc', outline: 'none', fontSize: 15 }}
+        disabled={!wsConnected}
         required
       />
-      <button type="submit">Send</button>
+      <button
+        type="submit"
+        disabled={!input.trim() || !wsConnected}
+        style={{
+          background: wsConnected ? '#1976d2' : '#aaa',
+          color: '#fff',
+          border: 'none',
+          borderRadius: 16,
+          padding: '8px 20px',
+          fontWeight: 'bold',
+          cursor: wsConnected ? 'pointer' : 'not-allowed',
+          fontSize: 15,
+        }}
+      >
+        Send
+      </button>
     </form>
   );
 }
