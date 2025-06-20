@@ -35,38 +35,38 @@ Here's a glimpse of the application's interface:
 ## Directory Structure
 
 
-jayesh-2404-kuvaka-tech-assignment/
-├── workspace.code-workspace
-├── backend/
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── server.js
-│ ├── .gitignore
-│ └── models/
-│ └── Message.js
-└── frontend/
-├── README.md
-├── package-lock.json
-├── package.json
-├── .gitignore
-├── public/
-│ ├── index.html
-│ ├── manifest.json
-│ ├── robots.txt
-│ ├── readme1.png <- Screenshot of login screen
-│ └── readme2.png <- Screenshot of chat window
-└── src/
-├── App.css
-├── App.js
-├── App.test.js
-├── index.css
-├── index.js
-├── reportWebVitals.js
-├── setupTests.js
-└── components/
-├── ChatWindow.js
-├── MessageInput.js
-└── UsernameInput.js
+Directory structure:
+└── jayesh-2404-kuvaka-tech-assignment/
+    ├── workspace.code-workspace
+    ├── backend/
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── server.js
+    │   ├── .gitignore
+    │   └── models/
+    │       └── Message.js
+    └── frontend/
+        ├── README.md
+        ├── package-lock.json
+        ├── package.json
+        ├── .gitignore
+        ├── public/
+        │   ├── index.html
+        │   ├── manifest.json
+        │   └── robots.txt
+        └── src/
+            ├── App.css
+            ├── App.js
+            ├── App.test.js
+            ├── index.css
+            ├── index.js
+            ├── reportWebVitals.js
+            ├── setupTests.js
+            └── components/
+                ├── ChatWindow.js
+                ├── MessageInput.js
+                └── UsernameInput.js
+
 
 Generated code
 *   `backend/`: Contains the Node.js/Express server code, including models and routes.
