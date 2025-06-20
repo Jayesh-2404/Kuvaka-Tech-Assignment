@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     if (!username) return;
 
-    ws.current = new window.WebSocket('wss://kuvaka-tech-assignment-1.onrender.com');
+    ws.current = new window.WebSocket('wss://kuvaka-tech-assignment.onrender.com');
 
     ws.current.onopen = () => {
       setWsConnected(true);
