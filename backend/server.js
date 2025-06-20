@@ -7,17 +7,17 @@ const WebSocket = require('ws');
 const Message = require('./models/Message');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://kuvaka-tech-assignment-orpin.vercel.app', 
+  credentials: true
+}));
 
 // Create HTTP server and attach WebSocket server
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
@@ -28,6 +28,7 @@ const clients = new Map();
 // Handle WebSocket connections
 wss.on('connection', (ws) => {
   let username = null;
+  console.log('WebSocket client connected');
 
   // Helper: send data as JSON
   const sendJSON = (data) => ws.send(JSON.stringify(data));
@@ -69,6 +70,7 @@ wss.on('connection', (ws) => {
 
   ws.on('close', () => {
     clients.delete(ws);
+    console.log('WebSocket client disconnected');
     // Optionally, broadcast user left (not required for MVP)
   });
 });
